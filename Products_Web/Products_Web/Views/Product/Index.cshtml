@@ -1,0 +1,51 @@
+﻿@using Products_Web.Models.Product
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<ProductViewModel>
+
+<h2>Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <th>@product.Name</th>
+                <th>@product.Price</th>
+                <th>@product.Stock</th>
+                <th>
+                    <button>
+                        @*Product - ProductController; Edit - Edit Action in ProductController*@
+                        <a 
+                            asp-controller="Product"
+                            asp-action="Edit"
+                            asp-route-id="@product.Id">
+                            Edit
+                        </a>
+                    </button>
+                    <button>
+                        <a asp-controller="Product"
+                           asp-action="Delete"
+                           asp-route-id="@product.Id">
+                            Delete
+                        </a>
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+
