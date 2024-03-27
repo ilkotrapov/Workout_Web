@@ -18,7 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationContext>( context => 
 context.UseMySQL(connectionString));
 
-builder.Services.AddDefaultIdentity<User>(options => 
+builder.Services.AddIdentity<User, IdentityRole>(options => 
 {
     options.Password.RequireDigit = true;
     options.Password.RequireNonAlphanumeric = true;
@@ -30,6 +30,8 @@ builder.Services.AddDefaultIdentity<User>(options =>
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddRazorPages();
 
@@ -47,6 +49,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+DataSeed.SeedUserRoles(app);
 app.UseAuthentication();
 
 app.UseAuthorization();
