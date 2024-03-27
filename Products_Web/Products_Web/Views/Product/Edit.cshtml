@@ -1,10 +1,9 @@
 ﻿@*
 *@
-@model EditProductViewModel
 @{
 }
 
-<h2>Create Product</h2>
+<h2>Edit Product</h2>
 
 <form mothod="post" asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id">
     <p>
@@ -22,7 +21,7 @@
         <input type="number" name="Stock" value="@Model.Stock" />
     </p>
 
-    <button type="submit">Done</button>
+    <button type="submit">Edit</button>
 
     <button>
         <a asp-controller="Product" asp-action="Index">Cancel</a>

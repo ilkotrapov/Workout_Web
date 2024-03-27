@@ -43,5 +43,6 @@ namespace Products_Web.Repositories
 
         public Product Get(int id)
             => context.Products.FirstOrDefault(product => product.Id == id);
+
     }
 }
