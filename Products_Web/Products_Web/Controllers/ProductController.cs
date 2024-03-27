@@ -46,12 +46,12 @@ namespace Products_Web.Controllers
             return View(product);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult Edit(EditProductViewModel product)
         {
             productService.Edit(product);
 
             return RedirectToAction(nameof(Index));
-        }
+        }*/
     }
 }

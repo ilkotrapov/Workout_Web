@@ -1,5 +1,6 @@
 ﻿using Products_Web.Data;
 using Products_Web.Data.Entities;
+using Products_Web.Models.Product;
 using Products_Web.Repositories.Interfaces;
 
 namespace Products_Web.Repositories
@@ -43,5 +44,10 @@ namespace Products_Web.Repositories
 
         public Product Get(int id)
             => context.Products.FirstOrDefault(product => product.Id == id);
+
+        public void Edit(EditProductViewModel product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
