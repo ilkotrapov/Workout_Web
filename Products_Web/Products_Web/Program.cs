@@ -31,7 +31,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
+builder.Services.AddScoped<IDietRepository, DietRepository>();
 builder.Services.AddScoped<ITrainerService, TrainerService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
