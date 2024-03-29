@@ -15,8 +15,10 @@ string connectionString = builder.Configuration.GetConnectionString("Application
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationContext>( context => 
-context.UseMySQL(connectionString));
+builder.Services.AddDbContext<ApplicationContext>(context => 
+    context
+    .UseLazyLoadingProxies()
+    .UseMySQL(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>(options => 
 {

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Products_Web.Data.Entities;
 
@@ -9,8 +8,10 @@ namespace Products_Web.Data
     {
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ProductDetails> ProductDetails { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
-            :base(options)
+            : base(options)
         { }
     }
 }

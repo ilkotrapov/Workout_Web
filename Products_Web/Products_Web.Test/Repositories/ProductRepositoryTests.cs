@@ -3,15 +3,12 @@ using Moq;
 using Products_Web.Data;
 using Products_Web.Data.Entities;
 using Products_Web.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Products_Web.Data;
 
-namespace Products_Web.Test.Repositories
+namespace Products_Web.Tests.Repositories
 {
-    public class ProductRepositoryTest
+    public class ProductRepositoryTests
     {
         private ProductRepository productRepository;
 
@@ -34,7 +31,7 @@ namespace Products_Web.Test.Repositories
         [Test]
         public void GivenAProduct_WhenAddingAProduct_AddsIt()
         {
-            var product = new Product("new Product", 10, 100);
+            var product = new Product("new product", 10, 100, new ProductDetails("calories: 100", DateTime.Now));
 
             productRepository.Add(product);
 
@@ -83,9 +80,9 @@ namespace Products_Web.Test.Repositories
         public void GivenNonExistingId_WhenGettingAProduct_ReturnsTheProduct()
         {
             SeedProducts();
-            var nonExistantId = -1;
+            var nonExistingId = -1;
 
-            var product = productRepository.Get(nonExistantId);
+            var product = productRepository.Get(nonExistingId);
 
             Assert.Null(product);
         }
@@ -95,9 +92,9 @@ namespace Products_Web.Test.Repositories
         {
             var products = new[]
             {
-                new Product(1,"product1",10,100),
-                new Product(2,"product2",12,110),
-                new Product(3,"product3",10,220)
+                  new Product(1, "product1", 10, 100, new ProductDetails(1, "calories: 100", DateTime.Now)),
+                  new Product(2, "product2", 15, 60, new ProductDetails(2, "calories: 569", DateTime.Now)),
+                  new Product(3, "product3", 300, 5, new ProductDetails(3, "none", DateTime.Now))
             };
             applicationContext.Products.AddRange(products);
             applicationContext.SaveChanges();
@@ -106,7 +103,8 @@ namespace Products_Web.Test.Repositories
         }
         private ApplicationContext SetUpApplicationContext()
         {
-            var options = new DbContextOptionsBuilder<ApplicationContext>().UseInMemoryDatabase("UnitTestDb");
+            var options = new DbContextOptionsBuilder<ApplicationContext>()
+                .UseInMemoryDatabase("UnitTestsDb");
 
             return new ApplicationContext(options.Options);
         }

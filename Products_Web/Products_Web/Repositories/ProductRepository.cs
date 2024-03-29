@@ -18,7 +18,10 @@ namespace Products_Web.Repositories
             {
                 throw new ArgumentException("Product can't be null!");
             }
+
+            context.ProductDetails.Add(product.Details);
             context.Products.Add(product);
+
             context.SaveChanges();
         }
 
