@@ -10,6 +10,8 @@ namespace Products_Web.Data
 
         public DbSet<ProductDetails> ProductDetails { get; set; }
 
+        public DbSet<Trainer> Trainers { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         { }
