@@ -6,6 +6,9 @@
         public string Email { get; set; }
         public string Gym { get; set; }
 
+        public CreateTrainerViewModel()
+        { }
+
         public CreateTrainerViewModel(string name, string email, string gym)
         {
             Name = name;

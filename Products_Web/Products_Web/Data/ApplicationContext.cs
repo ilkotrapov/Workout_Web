@@ -12,6 +12,8 @@ namespace Products_Web.Data
 
         public DbSet<Trainer> Trainers { get; set; }
 
+        public DbSet<Workout> Workouts { get; set; }
+
         public DbSet<Diet> Diets { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)

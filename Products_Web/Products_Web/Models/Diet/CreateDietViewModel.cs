@@ -6,6 +6,8 @@
         public string Duration { get; set; }
         public string Description { get; set; }
 
+        public CreateDietViewModel()
+        { }
         public CreateDietViewModel(string name, string duration, string description)
         {
             Name = name;

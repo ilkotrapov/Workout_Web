@@ -7,6 +7,8 @@ using Products_Web.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Products_Web.Data.Entities;
 using Trainers_Web.Services;
+using Workouts_Web.Services;
+using Diets_Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,12 +33,24 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<ApplicationContext>();
 
-builder.Services.AddScoped<IDietRepository, DietRepository>();
+
+#region Service/Repository
+builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
 builder.Services.AddScoped<ITrainerService, TrainerService>();
+
+builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
+builder.Services.AddScoped<IWorkoutService, WorkoutService>();
+
+builder.Services.AddScoped<IDietRepository, DietRepository>();
+builder.Services.AddScoped<IDietService, DietService>();
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+#endregion
+
 
 builder.Services.AddRazorPages();
 

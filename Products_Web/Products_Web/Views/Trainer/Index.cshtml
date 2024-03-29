@@ -1,12 +1,12 @@
-﻿@using Products_Web.Models.Product
+﻿@using Products_Web.Data.Constants
+@using Products_Web.Models.Product
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 @if(User.Identity?.IsAuthenticated ?? false){
-@model IEnumerable<DietViewModel>
-
+@model IEnumerable<TrainerViewModel>
     <h2>Trainer</h2>
 
 <table class="table">
@@ -26,24 +26,26 @@
                     <th>@trainer.Name</th>
                     <th>@trainer.Email</th>
                     <th>@trainer.Gym</th>
-                <th>
-                    <button>
-                        @*Product - ProductController; Edit - Edit Action in ProductController*@
-                        <a 
-                            asp-controller="Trainer"
-                            asp-action="Edit"
-                               asp-route-id="@trainer.Id">
-                            Edit
-                        </a>
-                    </button>
-                    <button>
-                        <a asp-controller="Trainer"
-                           asp-action="Delete"
-                               asp-route-id="@trainer.Id">
-                            Delete
-                        </a>
-                    </button>
-                </th>
+                    @if (User.IsInRole(UserRoles.Admin.ToString())) {
+                        <th>
+                            <button>
+                                @*Product - ProductController; Edit - Edit Action in ProductController*@
+                                <a 
+                                    asp-controller="Trainer"
+                                    asp-action="Edit"
+                                    asp-route-id="@trainer.Id">
+                                    Edit
+                                </a>
+                        </button>
+                        <button>
+                                      <a asp-controller="Trainer"
+                                       asp-action="Delete"
+                                       asp-route-id="@trainer.Id">
+                                       Delete
+                                       </a>
+                         </button>
+                    </th>
+                }
             </tr>
         }
     </tbody>
