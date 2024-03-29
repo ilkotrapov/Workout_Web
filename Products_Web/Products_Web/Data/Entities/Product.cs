@@ -31,5 +31,15 @@ namespace Products_Web.Data.Entities
             Price = price;
             Stock = stock;
         }
+
+        public override bool Equals(object? other)
+            => Equals((Product)other);
+
+        public bool Equals(Product other)
+            => other != null &&
+            Id == other.Id &&
+            Name == other.Name &&
+            Price == other.Price &&
+            Stock == other.Stock;
     }
 }

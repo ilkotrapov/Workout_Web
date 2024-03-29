@@ -29,6 +29,7 @@ namespace Products_Web.Test.Repositories
         {
             applicationContext.Database.EnsureDeleted();
         }
+
         #region Add
         [Test]
         public void GivenAProduct_WhenAddingAProduct_AddsIt()
@@ -39,17 +40,18 @@ namespace Products_Web.Test.Repositories
 
             var createdProduct = applicationContext.Products.LastOrDefault();
 
-            Assert.NotNull(createdProduct, "Product is null");
-            Assert.AreEqual(product.Name, createdProduct.Name,"NO NAME");
-            Assert.AreEqual(product.Price, createdProduct.Price, "NO PRICE");
-            Assert.AreEqual(product.Stock, createdProduct.Stock, "NO STOCK");
+            Assert.AreEqual(product, createdProduct, "Product is different than expected");
         }
 
-        public void GivenAProduct_WhenAddingAProduct_Throws()
+        [Test]
+        public void GivenNullProduct_WhenAddingAProduct_Throws()
         {
             var exception = Assert.Throws<ArgumentException>(() => productRepository.Add(null));
 
-            Assert.AreEqual("Product can't be null", exception.Message, "Exception message is different");
+            Assert.AreEqual(
+                "Product can't be null!",
+                exception.Message,
+                "Exception message is different than expected");
         }
         #endregion
 
@@ -57,20 +59,51 @@ namespace Products_Web.Test.Repositories
         [Test]
         public void WhenGettingAll_ReturnsAllProducts()
         {
-            var expectedProducts = new[]
+            var expectedProducts = SeedProducts();
+
+            var products = productRepository.GetAll();
+
+            Assert.AreEqual(expectedProducts, products);
+        }
+        #endregion
+
+        #region Get
+        [Test]
+        public void GivenAnExistingId_WhenGettingAProduct_ReturnsTheProduct()
+        {
+            var expectedProducts = SeedProducts();
+            var expectedProduct = expectedProducts.First();
+
+            var product = productRepository.Get(expectedProduct.Id);
+
+            Assert.AreEqual(expectedProduct, product, "Product is different than expected");
+        }
+
+        [Test]
+        public void GivenNonExistingId_WhenGettingAProduct_ReturnsTheProduct()
+        {
+            SeedProducts();
+            var nonExistantId = -1;
+
+            var product = productRepository.Get(nonExistantId);
+
+            Assert.Null(product);
+        }
+        #endregion
+
+        private IEnumerable<Product> SeedProducts()
+        {
+            var products = new[]
             {
                 new Product(1,"product1",10,100),
                 new Product(2,"product2",12,110),
                 new Product(3,"product3",10,220)
             };
-            applicationContext.Products.AddRange(expectedProducts);
+            applicationContext.Products.AddRange(products);
             applicationContext.SaveChanges();
 
-            var products = productRepository.GetAll();
-
-            Assert.AreEqual(expectedProducts, products, "no");
+            return products;
         }
-        #endregion
         private ApplicationContext SetUpApplicationContext()
         {
             var options = new DbContextOptionsBuilder<ApplicationContext>().UseInMemoryDatabase("UnitTestDb");

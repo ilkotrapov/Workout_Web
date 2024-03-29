@@ -16,7 +16,7 @@ namespace Products_Web.Repositories
         {
             if (product == null)
             {
-                throw new ArgumentException("Product can't be null");
+                throw new ArgumentException("Product can't be null!");
             }
             context.Products.Add(product);
             context.SaveChanges();
