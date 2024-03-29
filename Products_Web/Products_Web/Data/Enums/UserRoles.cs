@@ -1,6 +1,6 @@
 ﻿namespace Products_Web.Data.Constants
 {
-    public enum Roles
+    public enum UserRoles
     {
         User,
         Admin

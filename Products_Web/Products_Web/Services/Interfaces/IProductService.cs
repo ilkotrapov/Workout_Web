@@ -1,5 +1,4 @@
-﻿using Products_Web.Data.Entities;
-using Products_Web.Models.Product;
+﻿using Products_Web.Models.Product;
 
 namespace Products_Web.Services.Interfaces
 {
@@ -11,10 +10,8 @@ namespace Products_Web.Services.Interfaces
 
         void Delete(int id);
 
-        void Edit(EditProductViewModel product);
+        void Edit(ProductViewModel product);
 
         ProductViewModel Get(int id);
-
-        //ToDo: Get by Id
     }
 }

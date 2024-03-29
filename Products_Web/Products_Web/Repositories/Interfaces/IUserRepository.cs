@@ -7,4 +7,3 @@ namespace Products_Web.Repositories.Interfaces
         IEnumerable<UserViewModel> GetAll();
     }
 }
-
