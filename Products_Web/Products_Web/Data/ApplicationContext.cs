@@ -21,6 +21,8 @@ namespace Products_Web.Data
         public DbSet<PushUp> PushUps { get; set; }
         public DbSet<Squat> Squats { get; set; }
 
+        public DbSet<PullUp> PullUps { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         { }
