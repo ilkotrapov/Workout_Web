@@ -6,47 +6,47 @@
 @{
 }
 @if(User.Identity?.IsAuthenticated ?? false){
-@model IEnumerable<WorkoutViewModel>
+@model IEnumerable<SquatViewModel>
 
-    <h2>Workout</h2>
+    <h2>Squat</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Place</th>
-            </tr>
-        </thead>
-        @if (User.IsInRole(UserRoles.Admin.ToString()))
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Type</th>
+        </tr>
+    </thead>
+        @if ((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
         {
             <div class="mb-3">
-                <button type="button" onclick="window.location.href='/Exercise';">Exercises</button>
+                <button type="button" onclick="window.location.href='/Squat/Create';">Create Squat</button>
             </div>
         }
     <tbody>
-        @foreach (var workout in Model)
+        @foreach (var squat in Model)
         {
             <tr>
-                    <th>@workout.Name</th>
-                    <th>@workout.Duration</th>
-                    <th>@workout.Place</th>
+                    <th>@squat.Name</th>
+                    <th>@squat.Difficulty</th>
+                    <th>@squat.Type</th>
                     @if ((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
                     {
                         <th>
                             <button>
                         @*Product - ProductController; Edit - Edit Action in ProductController*@
                         <a 
-                            asp-controller="Workout"
+                            asp-controller="Squat"
                             asp-action="Edit"
-                               asp-route-id="@workout.Id">
+                            asp-route-id="@squat.Id">
                             Edit
                         </a>
                     </button>
                     <button>
-                        <a asp-controller="Workout"
-                           asp-action="Delete"
-                               asp-route-id="@workout.Id">
+                        <a  asp-controller="Squat"
+                            asp-action="Delete"
+                            asp-route-id="@squat.Id">
                             Delete
                         </a>
                     </button>

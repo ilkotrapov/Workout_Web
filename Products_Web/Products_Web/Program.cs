@@ -11,6 +11,8 @@ using Workouts_Web.Services;
 using Diets_Web.Services;
 using Exercises_Web.Services;
 using PushUps_Web.Services;
+using Squats_Web.Services;
+using PullUps_Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,10 +43,13 @@ builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
 builder.Services.AddScoped<ITrainerService, TrainerService>();
 
 builder.Services.AddScoped<IPushUpRepository, PushUpRepository>();
-builder.Services.AddScoped<IPushUpService, PushUpService>();x
+builder.Services.AddScoped<IPushUpService, PushUpService>();
 
-builder.Services.AddScoped<IPushUpRepository, SquatRepository>();
-builder.Services.AddScoped<IPushUpService, SquatService>();
+builder.Services.AddScoped<IPullUpRepository, PullUpRepository>();
+builder.Services.AddScoped<IPullUpService, PullUpService>();
+
+builder.Services.AddScoped<ISquatRepository, SquatRepository>();
+builder.Services.AddScoped<ISquatService, SquatService>();
 
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();

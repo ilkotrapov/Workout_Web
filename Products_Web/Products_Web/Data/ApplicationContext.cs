@@ -19,6 +19,7 @@ namespace Products_Web.Data
         public DbSet<Exercise> Exercises { get; set; }
 
         public DbSet<PushUp> PushUps { get; set; }
+
         public DbSet<Squat> Squats { get; set; }
 
         public DbSet<PullUp> PullUps { get; set; }
