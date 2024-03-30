@@ -6,6 +6,6 @@ namespace Products_Web.Services.Interfaces
     {
         IEnumerable<UserViewModel> GetAll();
 
-        //Task<IEnumerable<UserViewModel>> GetAll2();
+        Task<IEnumerable<UserViewModel>> GetAllAsync();
     }
 }

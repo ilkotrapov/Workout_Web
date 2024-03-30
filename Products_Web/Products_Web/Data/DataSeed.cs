@@ -10,7 +10,7 @@ namespace Products_Web.Data
             using var scope = webApplication.Services.CreateScope();
             var dbContext = scope.ServiceProvider.GetService<ApplicationContext>();
 
-            var roles = Enum.GetValues(typeof(Roles));
+            var roles = Enum.GetValues(typeof(UserRoles));
             foreach (var role in roles)
             {
                 var roleName = role.ToString();

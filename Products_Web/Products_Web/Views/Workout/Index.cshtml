@@ -1,0 +1,55 @@
+﻿@using Products_Web.Models.Product
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if(User.Identity?.IsAuthenticated ?? false){
+@model IEnumerable<WorkoutViewModel>
+
+    <h2>Workout</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Place</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var workout in Model)
+        {
+            <tr>
+                    <th>@workout.Name</th>
+                    <th>@workout.Duration</th>
+                    <th>@workout.Place</th>
+                <th>
+                    <button>
+                        @*Product - ProductController; Edit - Edit Action in ProductController*@
+                        <a 
+                            asp-controller="Workout"
+                            asp-action="Edit"
+                               asp-route-id="@workout.Id">
+                            Edit
+                        </a>
+                    </button>
+                    <button>
+                        <a asp-controller="Workout"
+                           asp-action="Delete"
+                               asp-route-id="@workout.Id">
+                            Delete
+                        </a>
+                    </button>
+                </th>
+            </tr>
+        }
+    </tbody>
+    </table>
+}
+else
+{
+    <h2 class="error">You can't access this page if you aren't logged in.</h2>
+}

@@ -1,0 +1,35 @@
+﻿@*
+*@
+@{
+}
+@if (User.Identity?.IsAuthenticated ?? false)
+{
+    <h2>Edit Workout</h2>
+
+    <form mothod="post" asp-controller="Workout" asp-action="Edit" asp-route-id="@Model.Id">
+        <p>
+            <label>Name</label>
+            <input type="text" name="Name" value="@Model.Name"/>
+        </p>
+
+        <p>
+            <label>Duration</label>
+            <input type="text" name="Duration" value="@Model.Duration" />
+        </p>
+
+        <p>
+            <label>Place</label>
+            <input type="text" name="Place" value="@Model.Place" />
+        </p>
+
+        <button type="submit">Edit</button>
+
+        <button>
+            <a asp-controller="Workout" asp-action="Index">Cancel</a>
+        </button>
+    </form>
+}
+else
+{
+    <h2 class="error">You can't access this page if you aren't logged in.</h2>
+}

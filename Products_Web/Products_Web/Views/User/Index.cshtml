@@ -24,7 +24,7 @@
 
     @foreach (var user in users)
     {
-            var rowColor = user.Role == Roles.Admin.ToString() ? "red" : "black";
+            var rowColor = user.Role == UserRoles.Admin.ToString() ? "red" : "black";
             <tr style="color: @rowColor">
             <td>@user.Id</td>
             <td>@user.Name</td>

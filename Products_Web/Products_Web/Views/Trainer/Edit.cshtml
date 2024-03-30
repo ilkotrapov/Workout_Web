@@ -1,0 +1,36 @@
+﻿@using Products_Web.Data.Constants
+@*
+*@
+@{
+}
+@if (User.Identity?.IsAuthenticated ?? false && User.IsInRole(UserRoles.Admin.ToString()))
+{
+    <h2>Edit Trainer</h2>
+
+    <form mothod="post" asp-controller="Trainer" asp-action="Edit" asp-route-id="@Model.Id">
+        <p>
+            <label>Name</label>
+            <input type="text" name="Name" value="@Model.Name"/>
+        </p>
+
+        <p>
+            <label>Email</label>
+            <input type="text" name="Email" value="@Model.Email" />
+        </p>
+
+        <p>
+            <label>Gym</label>
+            <input type="text" name="Gym" value="@Model.Gym" />
+        </p>
+
+        <button type="submit">Edit</button>
+
+        <button>
+            <a asp-controller="Trainer" asp-action="Index">Cancel</a>
+        </button>
+    </form>
+}
+else
+{
+    <h2 class="error">You can't access this page if you aren't logged in.</h2>
+}

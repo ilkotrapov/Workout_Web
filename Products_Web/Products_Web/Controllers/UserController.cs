@@ -12,17 +12,18 @@ namespace Products_Web.Controllers
             this.userService = userService;
         }
 
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    var user = userService.GetAll();
+
+        //    return View(user);
+        //}
+
+        public async Task<IActionResult> IndexAsync()
         {
-            var user = userService.GetAll();
+            var user = await userService.GetAllAsync();
 
             return View(user);
         }
-        /*public async Task<IActionResult> GetAll2()
-        {
-            var user = await userService.GetAll2();
-
-            return View(user);
-        }*/
     }
 }

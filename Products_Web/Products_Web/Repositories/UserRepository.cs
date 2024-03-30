@@ -12,27 +12,28 @@ namespace Products_Web.Repositories
         {
             this.dbContext = dbContext;
         }
+
         public IEnumerable<UserViewModel> GetAll()
-        {
-            var userEntities = dbContext.Users.ToList().Select(userEntity =>
-            {
-                var userRole = dbContext.UserRoles.FirstOrDefault(userRoleEntity => userRoleEntity.UserId == userEntity.Id);
-                if (userRole is null)
+            => dbContext.Users
+                .ToList()
+                .Select(userEntity =>
                 {
-                    return null;
-                }
+                    var userRole = dbContext.UserRoles
+                        .FirstOrDefault(userRoleEntity => userRoleEntity.UserId == userEntity.Id);
+                    if (userRole is null)
+                    {
+                        return null;
+                    }
 
-                var role = dbContext.Roles.First(roleEntity => userEntity.Id == userRole.RoleId);
+                    var role = dbContext.Roles
+                        .First(roleEntity => roleEntity.Id == userRole.RoleId);
 
-                return new UserViewModel(userEntity.Id,
-                                         userEntity.Email,
-                                         userEntity.UserName,
-                                         role.Name);
-            })
-            .Where(user => user != null);
-            return null;
-        }
-
-
+                    return new UserViewModel(
+                        userEntity.Id,
+                        userEntity.Email,
+                        userEntity.Name,
+                        role.Name);
+                })
+                .Where(user => user != null);
     }
 }
