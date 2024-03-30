@@ -1,9 +1,10 @@
-﻿@*
+﻿@using Products_Web.Data.Constants
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
-@if (User.Identity?.IsAuthenticated ?? false)
+@if((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
 {
     <h2>Create Product</h2>
 

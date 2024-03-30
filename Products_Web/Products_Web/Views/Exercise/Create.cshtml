@@ -6,22 +6,22 @@
 }
 @if((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
 {
-    <h2>Create Workout</h2>
+    <h2>Create Exercise</h2>
 
-    <form mothod="post" asp-controller="Workout" asp-action="Create">
+    <form mothod="post" asp-controller="Exercise" asp-action="Create">
         <p>
             <label>Name</label>
             <input type="text" name="Name" />
         </p>
 
         <p>
-            <label>Duration</label>
-            <input type="text" name="Duration" />
+            <label>Difficulty</label>
+            <input type="text" name="Difficulty" />
         </p>
 
         <p>
-            <label>Place</label>
-            <input type="text" name="Place" />
+            <label>Type</label>
+            <input type="text" name="Type" />
         </p>
 
         <button type="submit">Create</button>

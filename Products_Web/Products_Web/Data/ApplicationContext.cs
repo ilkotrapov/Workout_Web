@@ -18,6 +18,8 @@ namespace Products_Web.Data
 
         public DbSet<Exercise> Exercises { get; set; }
 
+        public DbSet<PushUp> PushUps { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         { }

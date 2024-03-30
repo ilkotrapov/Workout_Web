@@ -2,7 +2,7 @@
 
 namespace Products_Web.Data.Entities
 {
-    public class Exercise
+    public class PushUp
     {
         [Key]
         public int Id { get; set; }
@@ -16,16 +16,16 @@ namespace Products_Web.Data.Entities
         [Required]
         public string Type { get; set; }
 
-        public Exercise()
+        public PushUp()
         { }
 
-        public Exercise(int id, string name, string difficulty, string type)
+        public PushUp(int id, string name, string difficulty, string type)
             : this(name, difficulty, type)
         {
             Id = id;
         }
 
-        public Exercise(string name, string difficulty, string type)
+        public PushUp(string name, string difficulty, string type)
         {
             Name = name;
             Difficulty = difficulty;
@@ -33,9 +33,9 @@ namespace Products_Web.Data.Entities
         }
 
         public override bool Equals(object? other)
-            => Equals((Exercise)other);
+            => Equals((PushUp)other);
 
-        public bool Equals(Exercise other)
+        public bool Equals(PushUp other)
             => other != null &&
             Id == other.Id &&
             Name == other.Name &&

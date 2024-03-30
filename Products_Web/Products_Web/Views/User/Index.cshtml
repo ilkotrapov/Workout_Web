@@ -6,7 +6,7 @@
 @{
 }
 
-@if (User.Identity?.IsAuthenticated ?? false)
+@if((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
 {
     @model IEnumerable<UserViewModel>
     var users = Model;
@@ -36,5 +36,5 @@
 }
 else
 {
-    
+    <h2 class="error">You can't access this page if you aren't logged in.</h2>
 }

@@ -27,8 +27,10 @@
                 <th>@product.Name</th>
                 <th>@product.Price</th>
                 <th>@product.Stock</th>
-                <th>
-                    <button>
+                    @if ((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
+                    {
+                        <th>
+                            <button>
                         @*Product - ProductController; Edit - Edit Action in ProductController*@
                         <a 
                             asp-controller="Product"
@@ -45,6 +47,7 @@
                         </a>
                     </button>
                 </th>
+                }
             </tr>
         }
     </tbody>
