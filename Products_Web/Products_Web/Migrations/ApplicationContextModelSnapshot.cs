@@ -241,6 +241,29 @@ namespace Products_Web.Migrations
                     b.ToTable("ProductDetails");
                 });
 
+            modelBuilder.Entity("Products_Web.Data.Entities.PullUp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Difficulty")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PullUps");
+                });
+
             modelBuilder.Entity("Products_Web.Data.Entities.PushUp", b =>
                 {
                     b.Property<int>("Id")
@@ -262,6 +285,29 @@ namespace Products_Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PushUps");
+                });
+
+            modelBuilder.Entity("Products_Web.Data.Entities.Squat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Difficulty")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Squats");
                 });
 
             modelBuilder.Entity("Products_Web.Data.Entities.Trainer", b =>

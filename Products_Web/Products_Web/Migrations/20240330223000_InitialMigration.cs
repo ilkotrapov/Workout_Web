@@ -105,6 +105,22 @@ namespace Products_Web.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "PullUps",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false),
+                    Difficulty = table.Column<string>(type: "longtext", nullable: false),
+                    Type = table.Column<string>(type: "longtext", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PullUps", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "PushUps",
                 columns: table => new
                 {
@@ -117,6 +133,22 @@ namespace Products_Web.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PushUps", x => x.Id);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Squats",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false),
+                    Difficulty = table.Column<string>(type: "longtext", nullable: false),
+                    Type = table.Column<string>(type: "longtext", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Squats", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -358,7 +390,13 @@ namespace Products_Web.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
+                name: "PullUps");
+
+            migrationBuilder.DropTable(
                 name: "PushUps");
+
+            migrationBuilder.DropTable(
+                name: "Squats");
 
             migrationBuilder.DropTable(
                 name: "Trainers");
