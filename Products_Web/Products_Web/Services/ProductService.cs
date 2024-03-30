@@ -1,4 +1,4 @@
-﻿using Products_Web.Data.Entities;
+﻿/*using Products_Web.Data.Entities;
 using Products_Web.Models.Product;
 using Products_Web.Repositories.Interfaces;
 using Products_Web.Services.Interfaces;
@@ -44,4 +44,4 @@ namespace Products_Web.Services
         public void Delete(int id)
             => productRepository.Delete(id);
     }
-}
+}*/

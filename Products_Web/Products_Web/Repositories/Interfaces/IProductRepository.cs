@@ -1,4 +1,4 @@
-﻿using Products_Web.Data.Entities;
+﻿/*using Products_Web.Data.Entities;
 using Products_Web.Models.Product;
 
 namespace Products_Web.Repositories.Interfaces
@@ -15,4 +15,4 @@ namespace Products_Web.Repositories.Interfaces
 
         Product Get(int id);
     }
-}
+}*/
