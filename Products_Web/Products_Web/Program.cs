@@ -41,7 +41,10 @@ builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
 builder.Services.AddScoped<ITrainerService, TrainerService>();
 
 builder.Services.AddScoped<IPushUpRepository, PushUpRepository>();
-builder.Services.AddScoped<IPushUpService, PushUpService>();
+builder.Services.AddScoped<IPushUpService, PushUpService>();x
+
+builder.Services.AddScoped<IPushUpRepository, SquatRepository>();
+builder.Services.AddScoped<IPushUpService, SquatService>();
 
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
