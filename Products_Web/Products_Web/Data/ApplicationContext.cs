@@ -10,6 +10,17 @@ namespace Products_Web.Data
 
         public DbSet<ProductDetails> ProductDetails { get; set; }
 
+<<<<<<< Updated upstream
+=======
+        public DbSet<Trainer> Trainers { get; set; }
+
+        public DbSet<Workout> Workouts { get; set; }
+
+        public DbSet<Diet> Diets { get; set; }
+
+        public DbSet<Exercise> Exercises { get; set; }
+
+>>>>>>> Stashed changes
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         { }
