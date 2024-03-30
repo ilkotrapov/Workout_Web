@@ -36,6 +36,14 @@
                     {
                         <td><a href="PushUp/Index">View</a></td>
                     }
+                    @if (@exercise.Name == "Squat")
+                    {
+                        <td><a href="Squat/Index">View</a></td>
+                    }
+                    @if (@exercise.Name == "PullUp")
+                    {
+                        <td><a href="PullUp/Index">View</a></td>
+                    }
                 <th>
                         @if ((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
                         {

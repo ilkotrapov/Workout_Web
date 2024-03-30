@@ -1,4 +1,4 @@
-﻿/*using Products_Web.Models.Product;
+﻿using Products_Web.Models.Product;
 
 namespace Products_Web.Services.Interfaces
 {
@@ -14,4 +14,4 @@ namespace Products_Web.Services.Interfaces
 
         ProductViewModel Get(int id);
     }
-}*/
+}

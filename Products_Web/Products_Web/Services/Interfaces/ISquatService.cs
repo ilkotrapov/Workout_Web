@@ -3,7 +3,7 @@ using Products_Web.Models.Product;
 
 namespace Products_Web.Services.Interfaces
 {
-    public interface Isquatservice
+    public interface ISquatService
     {
         void Add(CreateSquatViewModel Squat);
 
