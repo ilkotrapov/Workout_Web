@@ -11,7 +11,7 @@ using Products_Web.Data;
 namespace Products_Web.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240329223620_InitialMigration")]
+    [Migration("20240330201623_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -176,6 +176,29 @@ namespace Products_Web.Migrations
                     b.ToTable("Diets");
                 });
 
+            modelBuilder.Entity("Products_Web.Data.Entities.Exercise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Difficulty")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Exercises");
+                });
+
             modelBuilder.Entity("Products_Web.Data.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -219,6 +242,29 @@ namespace Products_Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductDetails");
+                });
+
+            modelBuilder.Entity("Products_Web.Data.Entities.PushUp", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Difficulty")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PushUps");
                 });
 
             modelBuilder.Entity("Products_Web.Data.Entities.Trainer", b =>

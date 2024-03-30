@@ -5,28 +5,28 @@
 }
 @if((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
 {
-    <h2>Edit Product</h2>
+    <h2>Edit Exercise</h2>
 
-    <form mothod="post" asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id">
+    <form mothod="post" asp-controller="Exercise" asp-action="Edit" asp-route-id="@Model.Id">
         <p>
             <label>Name</label>
             <input type="text" name="Name" value="@Model.Name"/>
         </p>
 
         <p>
-            <label>Price</label>
-            <input type="number" step="any" name="Price" value="@Model.Price" />
+            <label>Difficulty</label>
+            <input type="text" name="Difficulty" value="@Model.Difficulty" />
         </p>
 
         <p>
-            <label>Stock</label>
-            <input type="number" name="Stock" value="@Model.Stock" />
+            <label>Type</label>
+            <input type="text" name="Type" value="@Model.Type" />
         </p>
 
         <button type="submit">Edit</button>
 
         <button>
-            <a asp-controller="Product" asp-action="Index">Cancel</a>
+            <a asp-controller="Exercise" asp-action="Index">Cancel</a>
         </button>
     </form>
 }

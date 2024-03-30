@@ -1,0 +1,68 @@
+﻿@using Products_Web.Data.Constants
+@using Products_Web.Models.Product
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if(User.Identity?.IsAuthenticated ?? false){
+@model IEnumerable<ExerciseViewModel>
+
+    <h2>Exercise</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Difficulty</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        @if ((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
+        {
+            <div class="mb-3">
+                <button type="button" onclick="window.location.href='/Exercise/Create';">Create Exercises</button>
+            </div>
+        }
+
+    <tbody>
+        @foreach (var exercise in Model)
+        {
+            <tr>
+                    <th>@exercise.Name</th>
+                    <th>@exercise.Difficulty</th>
+                    <th>@exercise.Type</th>
+                    @if (@exercise.Name == "PushUp")
+                    {
+                        <td><a href="PushUp/Index">View</a></td>
+                    }
+                <th>
+                        @if ((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
+                        {
+                            <button>
+                                @*Product - ProductController; Edit - Edit Action in ProductController*@
+                            <a 
+                                asp-controller="Exercise"
+                                asp-action="Edit"
+                                asp-route-id="@exercise.Id">
+                                Edit
+                            </a>
+                            </button>
+                            <button>
+                            <a  asp-controller="Exercise"
+                                asp-action="Delete"
+                                asp-route-id="@exercise.Id">
+                                Delete
+                            </a>
+                            </button>
+                    }
+                </th>
+            </tr>
+        }
+    </tbody>
+    </table>
+}
+else
+{
+    <h2 class="error">You can't access this page if you aren't logged in.</h2>
+}

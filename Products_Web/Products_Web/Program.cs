@@ -9,6 +9,8 @@ using Products_Web.Data.Entities;
 using Trainers_Web.Services;
 using Workouts_Web.Services;
 using Diets_Web.Services;
+using Exercises_Web.Services;
+using PushUps_Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +40,9 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
 builder.Services.AddScoped<ITrainerService, TrainerService>();
 
+builder.Services.AddScoped<IPushUpRepository, PushUpRepository>();
+builder.Services.AddScoped<IPushUpService, PushUpService>();
+
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 
@@ -46,6 +51,9 @@ builder.Services.AddScoped<IDietService, DietService>();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+
+builder.Services.AddScoped<IExerciseRepository, ExerciseRepository>();
+builder.Services.AddScoped<IExerciseService, ExerciseService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();

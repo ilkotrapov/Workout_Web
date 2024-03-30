@@ -1,8 +1,9 @@
-﻿@*
+﻿@using Products_Web.Data.Constants
+@*
 *@
 @{
 }
-@if (User.Identity?.IsAuthenticated ?? false)
+@if((User.Identity?.IsAuthenticated ?? false) && User.IsInRole(UserRoles.Admin.ToString()))
 {
     <h2>Edit Workout</h2>
 
