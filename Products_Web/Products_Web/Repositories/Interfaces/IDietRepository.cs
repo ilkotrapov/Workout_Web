@@ -13,7 +13,7 @@ namespace Products_Web.Repositories.Interfaces
         void Delete(int id);
 
         void Edit(Diet diet);
-        //void Edit(EditProductViewModel product);
+        //void Edit(Edit"Product"ViewModel product);
 
         Diet Get(int id);
     }

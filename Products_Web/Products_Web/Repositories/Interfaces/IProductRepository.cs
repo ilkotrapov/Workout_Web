@@ -12,6 +12,7 @@ namespace Products_Web.Repositories.Interfaces
         void Delete(int id);
 
         void Edit(ProductViewModel product);
+        //void Edit(Edit"Product"ViewModel product);
 
         Product Get(int id);
     }
