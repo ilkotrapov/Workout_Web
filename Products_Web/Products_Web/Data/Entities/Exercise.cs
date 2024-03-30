@@ -43,4 +43,4 @@ namespace Products_Web.Data.Entities
             Type == other.Type;
     }
 }
-}
+

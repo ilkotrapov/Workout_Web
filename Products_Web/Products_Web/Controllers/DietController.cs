@@ -2,6 +2,8 @@
 using Products_Web.Models.Product;
 using Products_Web.Services.Interfaces;
 
+//bomboclat controller
+
 namespace Products_Web.Controllers
 {
     public class DietController : Controller
