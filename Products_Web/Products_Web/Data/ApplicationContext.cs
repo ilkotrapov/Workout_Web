@@ -16,6 +16,8 @@ namespace Products_Web.Data
 
         public DbSet<Diet> Diets { get; set; }
 
+        public DbSet<Exercise> Exercises { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         { }
