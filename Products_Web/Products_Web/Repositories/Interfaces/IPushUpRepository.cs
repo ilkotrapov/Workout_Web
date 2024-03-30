@@ -13,7 +13,7 @@ namespace Products_Web.Repositories.Interfaces
         void Delete(int id);
 
         void Edit(PushUp pushup);
-        //void Edit(EditProductViewModel product);
+        //void Edit(Edit"Product"ViewModel product);
 
         PushUp Get(int id);
     }
